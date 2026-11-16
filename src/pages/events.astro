@@ -1,0 +1,40 @@
+---
+import Eventcard from "../components/Eventcard.astro";
+const endpoint = "https://bphedaswhofuabrmqoun.supabase.co/rest/v1/events?select=*&order=dato.desc";
+const apikey = "sb_publishable_kw8uTcW5ED7N2040ycEp2w_1a0cwbkV";
+
+const options = {
+  headers: { apikey: apikey },
+};
+
+const data = await fetch(endpoint, options).then((res) => res.json());
+
+---
+
+<section>
+    <h1>Events</h1>
+    <h2>Come hang out with us</h2>
+    <p>From casual meetups to creative skillsharing, our events are all about meeting new people, sharing ideas, and having a good time.</p>
+    <p>Come as you are, there's always room for one more.</p>
+</section>
+
+<section class="eventlist">
+
+    <h2>Upcoming Events</h2>
+
+    <section class="eventoversigt">
+      {data.map(event => <Eventcard {event} />)}
+    </section>
+
+</section>
+
+
+<style>
+@media (min-width: 600px) {    
+  .eventoversigt {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    }
+  }
+</style>
