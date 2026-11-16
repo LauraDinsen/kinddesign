@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+export async function getStaticPaths() {
+
+const endpoint = "https://bphedaswhofuabrmqoun.supabase.co/rest/v1/events?select=*&order=dato.desc";
+const apikey = "sb_publishable_kw8uTcW5ED7N2040ycEp2w_1a0cwbkV";
+
+const options = {
+  headers: { apikey: apikey },
+
+}
+  const response = await fetch(endpoint, options);
+  const data: any[] = await response.json();
+
+  return data.map((event) => {
+    return {
+      params: { id: event.id.toString() },
+      props: { event },
+    };
+  });
+}
+
+//  toString laver tal om til tekst
+
+const { id } = Astro.params;
+const { event } = Astro.props;
+---
+
+<Layout>
+
+    <h1>{event.eventnavn}</h1>
+
+    <p> {event.beskrivelse}</p>
+
+    <div>
+  <p>{event.dato}</p>
+  <p>{event.lokation}</p>
+</div>
+
+<img
+        src=`https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/thumbnail.webp`
+        alt="eventbillede"
+    />
+
+    <section>
+
+        <div>
+            
+            <h2>Description</h2>
+            <p class="beskrivelsestekst"></p>
+        </div>
+        
+        
+        <div class="accordion">
+            
+            <details>
+                <summary>Event Details</summary>
+                <p>Here we could add more information about the event</p>
+            </details>
+            
+            <details>
+                <summary>Agenda</summary>
+                <p>Here we could add the agenda for the event</p>
+            </details>
+            <details>
+                <summary>A few things to know</summary>
+                <p>Here we could for example write that it's in english, and that there will be taken photos.</p>
+            </details>
+            <details>
+                <summary>Location</summary>
+                <p>Here we could put the full address and a feature with maps.</p>
+            </details>
+        </div>
+        
+    </section>
+        
+         
+</Layout>
+
+<style>
+    .tilbageknap {
+        display: inline-block;
+        margin: 1.5rem;
+        text-decoration: none;
+    }
+    .beskrivelsestekst {
+    max-width: 65ch;
+  }
+
+  @media (min-width: 600px) {
+  .beskrivelse 
+  {display: grid;
+  grid-template-columns: 1fr 1fr;} }
+
+
+  /* -------- STYLING FOR ACCORDION ---------*/ 
+  .accordion {
+    max-width: 600px;
+  }
+  .accordion details {
+  border-top: 1px solid #2C0F12;
+}
+
+.accordion details:last-child {
+  border-bottom: 1px solid #2C0F12;
+}
+
+.accordion summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 24px;
+  font-weight: 400;
+  color: #2C0F12;
+}
+
+/* Hide default arrow */
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom arrow */
+.accordion summary::after {
+  content: "v";
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate arrow when open */
+.accordion details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* Accordion content */
+.accordion details p {
+  margin: 0;
+  padding: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #321919;
+}
+
+</style>

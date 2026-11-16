@@ -1,0 +1,52 @@
+---
+const { event } = Astro.props;
+---
+
+<article>
+<h3>{event.eventnavn}</h3>
+<div>
+  <p>{event.dato}</p>
+  <p>{event.lokation}</p>
+  <a href=`/details/${event.id}`>Read more</a>
+</div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #3f0909e2;
+    background-size: cover;
+    background-position: center;
+  }
+
+  h3 {
+    color: #fffdf3;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+  }
+
+  div {
+    padding: 1rem;
+    background-color: #f6f3e8e8;
+    border-radius: 8px;
+  }
+
+  time {
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+  }
+
+
+</style>
