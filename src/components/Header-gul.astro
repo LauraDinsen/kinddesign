@@ -1,0 +1,194 @@
+<header class="header">
+  <a href="/" class="logo" aria-label="KindDesign CPH – Home">
+    <img
+    src="/kinddesign-logo-gul.svg"
+      alt="KindDesign CPH"
+      width="130"
+      height="85"
+    />
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="main-menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="main-menu" aria-label="Main navigation">
+    <a href="/events">Events</a>
+    <a href="/collaborations">Collaborations</a>
+    <a href="/about">About</a>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 32px;
+  }
+
+  .logo {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .logo img {
+    display: block;
+    width: 130px;
+    height: auto;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding: 16px 40px;
+    background: #fbfeb4;
+    border-radius: 14px;
+  }
+
+  nav a {
+    color: #2c0f12;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #2c0f12;
+    outline-offset: 5px;
+  }
+
+  @media (max-width: 700px) {
+    .header {
+      padding: 16px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      width: 100px;
+    }
+
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+      border: 0;
+      border-radius: 10px;
+      background: #fbfeb4;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #2c0f12;
+    }
+
+    nav {
+      display: none;
+      box-sizing: border-box;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 12px 24px;
+    }
+
+    .menu-toggle[aria-expanded="true"] + nav {
+      display: flex;
+    }
+
+    nav a {
+      padding: 16px 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#main-menu");
+
+  if (button && menu) {
+    function closeMenu() {
+      button!.setAttribute("aria-expanded", "false");
+      button!.setAttribute("aria-label", "Open menu");
+    }
+
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute("aria-expanded", String(!isOpen));
+      button.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        button.getAttribute("aria-expanded") === "true"
+      ) {
+        closeMenu();
+        button.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        event.target instanceof Node &&
+        !button.closest("header")?.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    window.matchMedia("(max-width: 700px)").addEventListener("change", closeMenu);
+  }
+</script>
