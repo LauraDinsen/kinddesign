@@ -1,47 +1,141 @@
----
-
----
 
 <footer class="footer">
 
-  <div class="footertop">
-    <div class="footerline"></div>
-
+  <!-- LOGO TIL VENSTRE -->
+  <div class="footer-logo">
     <img
-      src="kinddesign-logo.svg"
-      alt="KindDesign logo"
-      class="footerlogo"
+      src="/kinddesign-logo.svg"
+      alt="KindDesign CPH logo"
     />
-
-    <div class="footerline"></div>
   </div>
 
-  <div class="footerbottom">
+  <!-- INDHOLD TIL HØJRE -->
+  <div class="footer-right">
 
-    <div class="footersocials">
-      <a href="https://www.instagram.com/kinddesign.cph/">
-        <img src="/images/instagram.svg" alt="Instagram" />
-      </a>
-
-      <a href="https://www.linkedin.com/company/kinddesign-cph/posts/">
-        <img src="linkedin-icon.svg" alt="Linkedin" />
-      </a>
-
-      <img src=
-           alt=""
-           class="footerstar" />
-    </div>
-
-    <nav class="footernav" aria-label="Footer navigation">
+    <!-- NAVIGATION -->
+    <nav class="footer-nav" aria-label="Footer navigation">
       <a href="/events/">Events</a>
       <a href="/about/">About</a>
     </nav>
 
+    <!-- SOCIALE IKONER -->
+    <div class="footer-socials">
+
+      <a href="https://www.instagram.com/kinddesign.cph/">
+        <img src="/public/instagram.svg" alt="Instagram" />
+      </a>
+
+      <a href="https://www.linkedin.com/company/kinddesign-cph/posts/">
+        <img src="/public/linkedin-icon.svg" alt="LinkedIn" />
+      </a>
+
+      <!-- STJERNE -->
+      <span class="footer-star" aria-hidden="true">✦</span>
+
+    </div>
+
   </div>
+
 </footer>
 
 <style>
+  /* HELE FOOTEREN */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F7F3E8;
+    padding: 60px 8%;
+    gap: 40px;
+  }
 
+  /* LOGO */
+  .footer-logo img {
+    display: block;
+    width: 220px;
+    height: auto;
+  }
 
+  /* HØJRE SIDE */
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* NAVIGATION */
+  .footer-nav {
+    display: flex;
+    gap: 50px;
+  }
+
+  .footer-nav a {
+    color: #171717;
+    font-size: 26px;
+    text-decoration: underline;
+  }
+
+  /* SOCIALE IKONER */
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .footer-socials img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  /* STJERNE */
+  .footer-star {
+    font-size: 50px;
+    color: #171717;
+    line-height: 1;
+  }
+
+  /* MOBILVERSION */
+  @media (max-width: 700px) {
+
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+      padding: 40px 20px;
+    }
+
+    .footer-logo img {
+      width: 160px;
+    }
+
+    .footer-right {
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-nav {
+      gap: 35px;
+    }
+
+    .footer-nav a {
+      font-size: 20px;
+    }
+
+    .footer-socials {
+      gap: 35px;
+    }
+
+    .footer-socials img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .footer-star {
+      font-size: 40px;
+    }
+  }
 </style>
+
 
