@@ -1,0 +1,54 @@
+---
+interface Props {
+  text?: string;
+  href?: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<a class="cta" href={href}>
+  {text}
+</a>
+
+<style>
+  .cta {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 100%;
+
+    padding: 24px 48px;
+    border-radius: 20px;
+    
+   color: rgb(251 254 180);
+     background-color: #2c0f12;
+
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .cta:hover {
+  background-color: #2c0f12;;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+  .cta:focus-visible {
+    outline: 3px solid rgb(251 254 180);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .cta {
+      padding: 16px 28px;
+      border-radius: 14px;
+      font-size: 24px;
+    }
+  }
+</style>
