@@ -1,4 +1,5 @@
 ---
+import HeaderBrun from '../../components/Header-brun.astro';
 import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
 
@@ -27,27 +28,34 @@ const { event } = Astro.props;
 ---
 
 <Layout>
+<HeaderBrun/>
 
-    <h1>{event.eventnavn}</h1>
+  <section class="detail-hero">
 
-    <p> {event.beskrivelse}</p>
-
-    <div>
-  <p>{event.dato}</p>
-  <p>{event.lokation}</p>
-</div>
-
-<img
-        src=`https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/thumbnail.webp`
-        alt="eventbillede"
+    <img
+    src=`https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/thumbnail.webp`
+    alt="eventbillede"
     />
+    
+    <div class="hero-text">
 
-    <section>
-
-        <div>
-            
-            <h2>Description</h2>
-            <p class="beskrivelsestekst"></p>
+      <h1>{event.eventnavn}</h1>
+      <p>{event.dato}</p>
+      <p>{event.adresse}</p>
+    </div>
+    
+    
+  </section>
+  
+  
+  <section>
+    
+    <div>
+      
+      <h2>Description</h2>
+      <p ></p>
+      
+      <p class="beskrivelsestekst"> {event.beskrivelse}</p>
         </div>
         
         
@@ -55,20 +63,20 @@ const { event } = Astro.props;
             
             <details>
                 <summary>Event Details</summary>
-                <p>Here we could add more information about the event</p>
-            </details>
+<p>{event.details}</p>            </details>
             
             <details>
                 <summary>Agenda</summary>
-                <p>Here we could add the agenda for the event</p>
+                <p>{event.Agenda}</p>
             </details>
             <details>
                 <summary>A few things to know</summary>
-                <p>Here we could for example write that it's in english, and that there will be taken photos.</p>
+                <p>{event.know}</p>
             </details>
             <details>
                 <summary>Location</summary>
-                <p>Here we could put the full address and a feature with maps.</p>
+                <p>{event.adresse}</p>
+
             </details>
         </div>
         
@@ -78,11 +86,37 @@ const { event } = Astro.props;
 </Layout>
 
 <style>
-    .tilbageknap {
+  .beskrivelsestekst,
+  .accordion {
+    white-space: pre-line;
+  }
+
+/* STYLING FOR HERO */
+.detail-hero {
+  display: grid;
+}
+
+.detail-hero > img {
+  grid-area: 1/1;
+  width: 100%;
+  height: 100%;
+
+}
+.hero-text {
+  background-color: #fbf8edeb;
+  grid-area: 1/1;
+  align-self: end;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+
+    /* .tilbageknap {
         display: inline-block;
         margin: 1.5rem;
         text-decoration: none;
-    }
+    } */
     .beskrivelsestekst {
     max-width: 65ch;
   }
