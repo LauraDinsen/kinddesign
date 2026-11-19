@@ -12,6 +12,7 @@ const options = {
 
 const data = await fetch(endpoint, options).then((res) => res.json());
 
+
 ---
 
 <Layout>
@@ -37,10 +38,10 @@ const data = await fetch(endpoint, options).then((res) => res.json());
 
 <div class="filtre-sort-bar">
   <nav class="filtre-nav">
-    <button>All Events</button>
-    <button>meetup</button>
-    <button>skillshare</button>
-    <button>talk</button>
+    <button data-kategori="Alle">All Events</button>
+    <button data-kategori="meetup">meetup</button>
+    <button data-kategori="skillshare">skillshare</button>
+    <button data-kategori="talk">talk</button>
   </nav>
 
   <nav class="sort-nav">
@@ -114,6 +115,7 @@ max-width: 500px;}
   gap: 1rem;
   margin: 1rem;
 }
+
 
 /* Styling af filter */
 .filtre-nav {
@@ -210,33 +212,44 @@ padding: 0.5rem 0.75rem;
 
 </style>
 
+
 <script>
 
-// Jeg kan ikke finde ud af at lave filtreringen og sorteringen... Spørger Alan på torsdag
+// FILTRERING
 
-  // FILTRERING
+// Find alle knapper, der ligger inde i et element med klassen "filtre-nav".
+document.querySelectorAll(".filtre-nav button").forEach((button) => {
+  // Når nogen klikker på denne knap, skal funktionen filtrer køre.
+  button.addEventListener("click", filtrer);
+});
 
-// Vi siger at js skal lytte efter hvornår der klikkes på knapperne i .filtre-nav. Når der klikkes, skal der foretages funktionen vi har kaldt 'filtrer'
-document.querySelectorAll(".filtre-nav button").forEach((button) => button.addEventListener("click", filtrer));
+// Funktionen kører ved et klik. Parameteren e indeholder oplysninger om klikket.
+function filtrer(e) {
+  // Find alle elementer med klassen "card", og gem samlingen i cards.
+  const cards = document.querySelectorAll(".card");
 
-// her definerer vi at vi skal have fat på data
-// vi definerer også at alleData, udnsit og data er det samme - altså der står det samme i alle tre.
-fetch(endpoint)
-  .then((res) => res.json())
-  .then((data) => {
-    alleData = udsnit = data;
-    visData(data);
-  });
+  // Hent kategorien fra knappens data-kategori i HTML.
+  // Hvis knappen har data-kategori="Sport", får valgtkategori værdien "Sport".
+  const valgtkategori = e.currentTarget.dataset.kategori;
 
-// nu definerer vi funktionen
-function filtrer(event) {
-  const valgt = event.target.textContent; //læs hvad der står i filter-knappen der klikkes på
-  if (valgt == "All Events") {
-    udsnit = alleData;
-  } else {
-    udsnit = alleData.filter((event) => event.kategori == valgt);
-  }
-  visData(udsnit);
+  // Gennemgå kortene ét ad gangen. card er det kort, vi undersøger lige nu.
+  cards.forEach((card) => {
+    // || betyder "eller". Det er nok, at én af de to betingelser er sand:
+    // Kortets kategori matcher den valgte kategori, eller brugeren har valgt "Alle".
+    if (card.dataset.kategori === valgtkategori || valgtkategori === "Alle") {
+      // Fjern CSS-klassen "hide", så kortet bliver vist.
+      card.classList.remove("hide");
+    } else {
+      // Ellers skal kortet skjules. Det gør vi ved at tilføje CSS-klassen "hide".
+      card.classList.add("hide");
+    } // Slut på valget mellem at vise og skjule kortet.
+  }); // Her slutter gennemgangen af kortene.
+
+  // Skriv den valgte kategori i browserens konsol, så du kan se, hvad der blev valgt.
+  console.log(valgtkategori);
 }
 
+
+
 </script>
+
