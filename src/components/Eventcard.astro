@@ -8,11 +8,11 @@ style={`background-image: linear-gradient(rgb(44 15 18 / 50%), rgb(44 15 18 / 50
 url("https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/card.webp")`}>
 <h3>{event.eventnavn}</h3>
 <div>
-  <p>{new Date(event.dato).toLocaleDateString("de-DE", {
+  <p class="card-dato">{new Date(event.dato).toLocaleDateString("de-DE", {
     day: "2-digit",
     month: "2-digit",
   })}</p>
-  <p>{event.lokation}</p>
+  <p class="card-location">{event.lokation}</p>
   <a href=`/details/${event.id}`>Read more</a>
 </div>
 </article>
@@ -63,6 +63,12 @@ url("https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-bil
     border-radius: 5px;
     padding: 4px 8px;
 
+  }
+
+  .card-dato, 
+  .card-location {font-weight: 600;}
+  .card-dato {
+    font-size: 1.5rem;
   }
 
 </style>
