@@ -1,0 +1,565 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<section class="backgroundcolor">
+<section class="about-section">
+
+ <div class="about-box">
+
+    <h1>SO, WHAT'S KINDDESIGN?</h1>
+
+    <p>
+      KindDesign CPH is a creative community
+      bringing together all kinds of designers
+      and creatives in Copenhagen.
+    </p>
+
+    <p>
+      We believe in the power of creativity,
+      inclusivity, and meaningful connections.
+      Through meetups, talks, workshops, and
+      skillsharing events, we create welcoming
+      spaces where people can connect,
+      exchange ideas, and inspire one another.
+    </p>
+
+    <p>
+      Our goal is to bring creative minds
+      together, encourage collaboration,
+      and build a community where everyone
+      feels welcome.
+    </p>
+
+  </div>
+
+
+</section>
+
+<section class="stats-section">
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <img src="/public/about1.webp" alt="participants at the event">
+      <h2>10+ EVENTS</h2>
+    </div>
+
+    <div class="stat-card">
+      <img src="/public/about2.webp" alt="Event community">
+      <h2>300+ DESIGNERS</h2>
+    </div>
+
+    <div class="stat-card">
+      <img src="/public/about3.webp" alt="Event participants">
+      <h2>500+ FOLLOWERS</h2>
+    </div>
+
+    <div class="stat-card">
+      <img src="/public/about4.webp" alt="Creative participants">
+      <h2>100% CREATIVITY</h2>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="jeremyandjulia">
+
+  <div class="story-grid">
+
+    <div class="story-text">
+
+      <h2>OUR STORY</h2>
+
+      <p>
+        Inspired by our co-founder Julia's experience
+        of living abroad, where attending creative
+        events helped her meet new people and build
+        meaningful connections, we wanted to bring
+        that same sense of community to Copenhagen.
+        What began as informal meetups and
+        conversations has since grown into something
+        bigger.
+      </p>
+
+      <p>
+        We've now hosted more than 10 events,
+        bringing together over 300 designers and
+        creatives. Over time, our events have
+        evolved to include talks with guest speakers,
+        hands-on workshops, and skillsharing sessions.
+      </p>
+
+      <p>
+        And we're just getting started! Our community
+        continues to grow, creating new opportunities
+        for people to connect, learn, and create
+        together.
+      </p>
+
+    </div>
+
+    <div class="story-image">
+      <img
+        src="/public/about5.webp"
+        alt="founders Jeremy and Julia"
+      >
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MEET THE FOUNDERS -->
+
+<section class="founders-section">
+
+  <h2 class="founders-title">MEET THE FOUNDERS</h2>
+
+  <div class="founder-grid">
+
+    <!-- JULIA -->
+
+    <div class="founder-text">
+      <h3>MEET JULIA</h3>
+
+      <p>
+        With an international background and a passion
+        for digital design, Julia finds inspiration in
+        creativity, new experiences, and meaningful
+        connections. During her time living in Lisbon,
+        she discovered how creative communities can
+        bring people together.
+      </p>
+
+      <p>
+        Inspired by this experience, she co-founded
+        KindDesign with Jeremy to create a similar
+        space in Copenhagen. Through KindDesign, Julia
+        hopes to connect creative minds, encourage
+        collaboration, and build a welcoming community
+        where everyone feels inspired and included.
+      </p>
+    </div>
+
+    <div class="founder-image">
+      <img src="public/about6.webp" alt="Julia, co-founder af KindDesign">
+    </div>
+
+    <!-- JEREMY -->
+
+    <div class="founder-image">
+      <img src="/public/about7.webp" alt="Jeremy, co-founder af KindDesign">
+    </div>
+
+    <div class="founder-text">
+      <h3>MEET JEREMY</h3>
+
+      <p>
+        Originally from Prague, Jeremy has called
+        Copenhagen home for nearly seven years.
+        As a creative entrepreneur, he is passionate
+        about branding, design, and bringing people
+        together.
+      </p>
+
+      <p>
+        Alongside running his creative studio, Double 2,
+        he co-founded KindDesign with Julia to create
+        a welcoming space where creatives can connect,
+        share ideas, and inspire one another.
+        Driven by curiosity and a desire to inspire
+        others, Jeremy believes in building meaningful
+        connections through creativity.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .backgroundcolor {
+        background-color: #F7F3E8 ;
+    }
+  /* DESKTOP SO,WHAT IS KINDDESIGN */
+
+  .about-section {
+    background-image: url("/baggrund.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+    padding: 100px 3% 60px;
+
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .about-box {
+    width: 72%;
+    max-width: 850px;
+    padding: 35px;
+
+    background-color: rgba(250, 235, 215, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .about-box h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 45px;
+    color: #2C0F12;
+  }
+
+  .about-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: #171717;
+  }
+
+  .about-box p:last-child {
+    margin-bottom: 0;
+  }
+
+
+  /* MOBILE SO,WHAT IS KINDDESIGN */
+
+  @media (max-width: 700px) {
+
+    .about-section {
+      min-height: 100vh;
+      padding: 40px 20px;
+      justify-content: center;
+    }
+
+    .about-box {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 30px 18px;
+
+      background-color: rgba(250, 235, 215, 0.7);
+      border-radius: 20px;
+    }
+
+    .about-box h1 {
+      font-size: 30px;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .about-box p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .about-box p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+  /* STATISTIK SEKTION MED DE 4 BILLEDER */
+
+.stats-section {
+  background-color: #F7F3E8;
+  padding: 30px 4%;
+}
+
+/* GRID MED 2 KOLONNER */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* HVERT BILLEDE */
+
+.stat-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+/* BILLEDER */
+
+.stat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  display: block;
+}
+
+/* TEKST OVENPÅ BILLEDER */
+
+.stat-card h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: #FEFDAE;
+  font-size: clamp(12px, 3.5vw, 22px);
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+
+  margin: 0;
+}
+
+
+/* DESKTOP SEKTION MED DE 4 BILLEDER */
+
+@media (min-width: 701px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .stats-section {
+    padding: 60px 4%;
+  }
+
+  .stat-card h2 {
+    font-size: clamp(14px, 1.6vw, 26px);
+  }
+
+}
+
+
+
+
+
+/* OUR STORY - DESKTOP */
+
+.story-section {
+  background-color: #F7F3E8;
+  padding: 100px 5%;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TEKST */
+
+.story-text h2 {
+  font-size: 52px;
+  color: #2C0F12;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+
+.story-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #171717;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* BILLEDE */
+
+.story-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+
+/* OUR STORY - MOBILE */
+
+@media (max-width: 700px) {
+
+  .story-section {
+    padding: 50px 20px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .story-text h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+
+  .story-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+
+  .story-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* MEET THE FOUNDERS - DESKTOP */
+
+.founders-section {
+  background-color: #F7F3E8;
+  padding: 80px 5% 100px;
+}
+
+/* OVERORDNET OVERSKRIFT */
+
+.founders-title {
+  font-size: 42px;
+  color: #2C0F12;
+  text-align: center;
+  margin: 0 0 80px;
+}
+
+/* GRID */
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  row-gap: 60px;
+  align-items: center;
+
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TEKST */
+
+.founder-text h3 {
+  font-size: 30px;
+  color: #2C0F12;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.founder-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #171717;
+}
+
+.founder-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* BILLEDER */
+
+.founder-image {
+  width: 100%;
+  max-width: 420px;
+  justify-self: center;
+}
+
+.founder-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* MEET THE FOUNDERS - MOBILE */
+
+@media (max-width: 700px) {
+
+  .founders-section {
+    padding: 50px 20px;
+  }
+
+  .founders-title {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .founder-text h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .founder-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .founder-image {
+    max-width: 100%;
+  }
+
+  .founder-image img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  /* PLACERING PÅ MOBIL */
+
+  .founder-grid > :nth-child(1) {
+    order: 1;
+  }
+
+  .founder-grid > :nth-child(2) {
+    order: 2;
+  }
+
+  .founder-grid > :nth-child(3) {
+    order: 4;
+  }
+
+  .founder-grid > :nth-child(4) {
+    order: 3;
+  }
+
+}
+</style>
