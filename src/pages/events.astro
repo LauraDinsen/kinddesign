@@ -35,13 +35,20 @@ const data = await fetch(endpoint, options).then((res) => res.json());
   <p>Check out what's next. Good vibes incoming.</p>
 </div>
 
-    
-      <nav class="filtre-nav">
-        <button>All Events</button>
-        <button>meetup</button>
-        <button>skillshare</button>
-        <button>talk</button>
-      </nav>
+<div class="filtre-sort-bar">
+  <nav class="filtre-nav">
+    <button>All Events</button>
+    <button>meetup</button>
+    <button>skillshare</button>
+    <button>talk</button>
+  </nav>
+
+  <nav class="sort-nav">
+    <button>Sort by name</button>
+    <button>Sort by date</button>
+  </nav>
+</div>
+
     <div class="eventoversigt">
       {data.map(event => <Eventcard {event} />)}
     </div>
@@ -93,7 +100,13 @@ const data = await fetch(endpoint, options).then((res) => res.json());
   .events-hero-text {
     background-color: #f6f3e8d9;
     padding: 2rem;
-  border-radius: 10px;}
+  border-radius: 10px;
+max-width: 500px;}
+
+.events-hero-text p {max-width: 60ch;}
+
+
+
 
 /* EVENT LISTE */
 .eventoversigt {
@@ -106,10 +119,10 @@ const data = await fetch(endpoint, options).then((res) => res.json());
 .filtre-nav {
   display: flex;
   background-color: #2c0f12;
-  border-radius: 50px;
+  border-radius: 5px;
   width: 250px;
   justify-content: space-around;
-  padding: 7px 14px ;
+  padding: 0.5rem 0.75rem;
 }
 
 .filtre-nav button {
@@ -122,8 +135,61 @@ const data = await fetch(endpoint, options).then((res) => res.json());
   font-size: 14px;
 }
 
-.filtre-nav button:hover{
-  text-decoration: underline;}
+/* Styling af sort */
+.sort-nav button { 
+  padding: 0;
+  border: none;
+  background: none;
+  color: #fbfeb4;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 14px;
+    background-color: #2c0f12;
+padding: 0.5rem 0.75rem;
+ border-radius: 5px;
+}
+
+.filtre-nav button:hover,
+.sort-nav button:hover {
+  text-decoration: underline;
+}
+
+
+/* Filter og sortering står tæt sammen.
+   Hvis der mangler plads, rykker sorteringen ned på næste linje. */
+.filtre-sort-bar,
+.filtre-nav,
+.sort-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+
+/* Giv tekst og knapper samme afstand til kanten som eventkortene. */
+.eventlist-text,
+.filtre-sort-bar {
+  margin-inline: 1rem;
+}
+
+@media (min-width: 850px) {
+  .eventlist {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Tekst til venstre, knapper til højre. */
+    align-items: end;                /* Knapperne flugter med bunden af teksten. */
+  }
+
+  .eventlist-text p {
+    margin-bottom: 0; /* Fjern den tomme plads under underteksten. */
+  }
+
+  .eventoversigt {
+    grid-column: 1 / -1; /* Kortene fylder hele rækken nedenunder. */
+  }
+}
+
+
 
 
 /* PAST EVENTS */
