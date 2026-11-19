@@ -3,7 +3,7 @@ const { event } = Astro.props;
 ---
 
 <article
-class="card"
+class="card" data-kategori={event.kategori} 
 style={`background-image: linear-gradient(rgb(44 15 18 / 50%), rgb(44 15 18 / 50%)),
 url("https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/card.webp")`}>
 <h3>{event.eventnavn}</h3>
@@ -18,6 +18,12 @@ url("https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-bil
 </article>
 
 <style>
+
+.hide {
+  display: none;
+
+}
+
   article {
     display: grid;
     grid-template-columns: 1fr 1fr;
