@@ -1,6 +1,7 @@
 ---
 import HeaderGul from "../components/Header-gul.astro";
 import HeaderBrun from "../components/Header-brun.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -29,6 +30,8 @@ const {
   <main>
     <slot />
   </main>
+    <Footer />
+
 </body>
 
 </html>
@@ -38,8 +41,14 @@ const {
     box-sizing: border-box;
   }
 
+html,
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
   body {
-    margin: 10px;
     background-color: #f6f3e8;
     color: #2c0f12;
     font-family: Arial, sans-serif;
