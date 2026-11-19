@@ -1,5 +1,18 @@
 ---
-import Footer from '../components/Footer.astro';
+import HeaderGul from "../components/Header-gul.astro";
+import HeaderBrun from "../components/Header-brun.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  header?: "gul" | "brun";
+}
+
+const {
+  title,
+  description = "Discover KindDesign CPH.",
+  header = "brun",
+} = Astro.props;
 ---
 
 <!doctype html>
