@@ -1,5 +1,8 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import GulKnap from "../components/GulKnap.astro";
 import Eventcard from "../components/Eventcard.astro";
+import HeaderBrun from "../components/Header-brun.astro";
 const endpoint = "https://bphedaswhofuabrmqoun.supabase.co/rest/v1/events?select=*&order=dato.desc";
 const apikey = "sb_publishable_kw8uTcW5ED7N2040ycEp2w_1a0cwbkV";
 
@@ -11,22 +14,70 @@ const data = await fetch(endpoint, options).then((res) => res.json());
 
 ---
 
-<section>
+<Layout>
+<header>
+  <HeaderBrun/>
+</header>
+<section class="events-hero">
+  <div class="events-hero-text">
+
     <h1>Events</h1>
     <h2>Come hang out with us</h2>
     <p>From casual meetups to creative skillsharing, our events are all about meeting new people, sharing ideas, and having a good time.</p>
     <p>Come as you are, there's always room for one more.</p>
+  </div>
 </section>
 
 <section class="eventlist">
+<div class="eventlist-text">
 
-    <h2>Upcoming Events</h2>
+  <h2>Upcoming Events</h2>
+  <p>Check out what's next. Good vibes incoming.</p>
+</div>
 
-    <section class="eventoversigt">
+<div class="filtre-sort-bar">
+  <nav class="filtre-nav">
+    <button>All Events</button>
+    <button>meetup</button>
+    <button>skillshare</button>
+    <button>talk</button>
+  </nav>
+
+  <nav class="sort-nav">
+    <button>Sort by name</button>
+    <button>Sort by date</button>
+  </nav>
+</div>
+
+    <div class="eventoversigt">
       {data.map(event => <Eventcard {event} />)}
-    </section>
+    </div>
 
 </section>
+
+<section class="past-events">
+<div>
+  <h2>Good times, already had</h2>
+  <p>For more community vibes, check out instagram.</p>
+</div>
+<div class="gallery">
+  <img src="/events-img/past-events-01.webp" alt="">
+  <img src="/events-img/past-events-02.webp" alt="">
+  <img src="/events-img/past-events-03.webp" alt="">
+  <img src="/events-img/past-events-04.webp" alt="">
+  <img src="/events-img/past-events-05.webp" alt="">
+  <img src="/events-img/past-events-06.webp" alt="">
+</div>
+</section>
+
+<div class="instagram-button">
+  <GulKnap
+    text="Check us out on instagram ↗"
+    href="https://www.instagram.com/kinddesign.cph/"
+  />
+</div>
+
+</Layout>
 
 
 <style>
@@ -37,4 +88,155 @@ const data = await fetch(endpoint, options).then((res) => res.json());
     gap: 2rem;
     }
   }
+
+
+  /* HERO */
+  .events-hero {
+    background-image: url("/events-img/hero.webp") ;
+    background-size: cover;
+    padding: 2rem;
+  }
+
+  .events-hero-text {
+    background-color: #f6f3e8d9;
+    padding: 2rem;
+  border-radius: 10px;
+max-width: 500px;}
+
+.events-hero-text p {max-width: 60ch;}
+
+
+
+
+/* EVENT LISTE */
+.eventoversigt {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+/* Styling af filter */
+.filtre-nav {
+  display: flex;
+  background-color: #2c0f12;
+  border-radius: 5px;
+  width: 250px;
+  justify-content: space-around;
+  padding: 0.5rem 0.75rem;
+}
+
+.filtre-nav button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #fbfeb4;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Styling af sort */
+.sort-nav button { 
+  padding: 0;
+  border: none;
+  background: none;
+  color: #fbfeb4;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 14px;
+    background-color: #2c0f12;
+padding: 0.5rem 0.75rem;
+ border-radius: 5px;
+}
+
+.filtre-nav button:hover,
+.sort-nav button:hover {
+  text-decoration: underline;
+}
+
+
+/* Filter og sortering står tæt sammen.
+   Hvis der mangler plads, rykker sorteringen ned på næste linje. */
+.filtre-sort-bar,
+.filtre-nav,
+.sort-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+
+/* Giv tekst og knapper samme afstand til kanten som eventkortene. */
+.eventlist-text,
+.filtre-sort-bar {
+  margin-inline: 1rem;
+}
+
+@media (min-width: 850px) {
+  .eventlist {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Tekst til venstre, knapper til højre. */
+    align-items: end;                /* Knapperne flugter med bunden af teksten. */
+  }
+
+  .eventlist-text p {
+    margin-bottom: 0; /* Fjern den tomme plads under underteksten. */
+  }
+
+  .eventoversigt {
+    grid-column: 1 / -1; /* Kortene fylder hele rækken nedenunder. */
+  }
+}
+
+
+
+
+/* PAST EVENTS */
+ .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem
+  }
+
+  .gallery img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
 </style>
+
+<script>
+
+// Jeg kan ikke finde ud af at lave filtreringen og sorteringen... Spørger Alan på torsdag
+
+  // FILTRERING
+
+// Vi siger at js skal lytte efter hvornår der klikkes på knapperne i .filtre-nav. Når der klikkes, skal der foretages funktionen vi har kaldt 'filtrer'
+document.querySelectorAll(".filtre-nav button").forEach((button) => button.addEventListener("click", filtrer));
+
+// her definerer vi at vi skal have fat på data
+// vi definerer også at alleData, udnsit og data er det samme - altså der står det samme i alle tre.
+fetch(endpoint)
+  .then((res) => res.json())
+  .then((data) => {
+    alleData = udsnit = data;
+    visData(data);
+  });
+
+// nu definerer vi funktionen
+function filtrer(event) {
+  const valgt = event.target.textContent; //læs hvad der står i filter-knappen der klikkes på
+  if (valgt == "All Events") {
+    udsnit = alleData;
+  } else {
+    udsnit = alleData.filter((event) => event.kategori == valgt);
+  }
+  visData(udsnit);
+}
+
+</script>
