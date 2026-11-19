@@ -3,23 +3,27 @@ import Layout from "../layouts/Layout.astro";
 import GulKnap from "../components/GulKnap.astro";
 import BrunKnap from "../components/BrunKnap.astro";
 import Footer from "../components/Footer.astro";
+import Eventcard from "../components/Eventcard.astro";
 
-const events = [
-  {
-    title: "TOKYO MEETUP",
-    date: "DEC 02",
-    location: "Copenhagen",
-    image: "/images/tokyo-meetup.webp",
-    href: "/events",
-  },
-  {
-    title: "AI SKILL-SHARING",
-    date: "DEC 18",
-    location: "Copenhagen",
-    image: "/images/ai-skillsharing.webp",
-    href: "/events",
-  },
-];
+const today = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Europe/Copenhagen",
+}).format(new Date());
+
+const endpoint =
+  "https://bphedaswhofuabrmqoun.supabase.co/rest/v1/events" +
+  "?select=*&order=dato.desc&limit=2";
+
+const apikey = "sb_publishable_kw8uTcW5ED7N2040ycEp2w_1a0cwbkV";
+
+const response = await fetch(endpoint, {
+  headers: { apikey },
+});
+
+if (!response.ok) {
+  throw new Error("Kunne ikke hente events fra Supabase.");
+}
+
+const events = await response.json();
 
 const collaborators = [
   { name: "Bernies.Space", logo: "/logo1.svg" },
@@ -84,28 +88,15 @@ const collaborators = [
     </div>
 
     <div class="event-grid">
-      {
-        events.map((event) => (
-          <article
-            class="event-card"
-            style={{ backgroundImage: `url("${event.image}")` }}
-          >
-            <h3>{event.title}</h3>
+  {events.map((event) => <Eventcard event={event} />)}
+</div>
 
-            <div class="event-info">
-              <div>
-                <p class="event-date">{event.date}</p>
-                <p class="event-location">{event.location}</p>
-              </div>
-
-              <a class="ticket-link" href={event.href}>
-                Get tickets
-              </a>
-            </div>
-          </article>
-        ))
-      }
-    </div>
+{
+  events.length === 0 && (
+    <p>Nye events er på vej. Kig snart forbi igen!</p>
+  )
+}
+   
   </section>
 
   <!-- COMMUNITY -->
@@ -398,68 +389,8 @@ const collaborators = [
     gap: 28px;
   }
 
-  .event-card {
-    position: relative;
-    isolation: isolate;
-    min-height: 310px;
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    gap: 16px;
-    padding: 24px;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #5b3931;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .event-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: rgb(0 0 0 / 15%);
-  }
-
-  .event-card h3 {
-    margin: 0;
-    color: #fff;
-    font-size: clamp(24px, 3vw, 40px);
-    line-height: 1.05;
-    overflow-wrap: anywhere;
-  }
-
-  .event-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 24px 16px;
-    border-radius: 8px;
-    background: rgb(246 243 232 / 85%);
-  }
-
-  .event-date {
-    margin: 0 0 8px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .event-location {
-    margin: 0;
-    font-size: 14px;
-  }
-
-  .ticket-link {
-    display: inline-block;
-    padding: 10px 16px;
-    border-radius: 6px;
-    background: #fbfeb4;
-    color: #2c0f12;
-    font-size: 14px;
-    text-decoration: none;
-  }
+  
+  
 
   .ticket-link:hover {
     text-decoration: underline;
