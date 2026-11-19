@@ -2,10 +2,16 @@
 const { event } = Astro.props;
 ---
 
-<article>
+<article
+class="card"
+style={`background-image: linear-gradient(rgb(44 15 18 / 50%), rgb(44 15 18 / 50%)),
+url("https://bphedaswhofuabrmqoun.supabase.co/storage/v1/object/public/event-billeder/${event.id}/card.webp")`}>
 <h3>{event.eventnavn}</h3>
 <div>
-  <p>{event.dato}</p>
+  <p>{new Date(event.dato).toLocaleDateString("de-DE", {
+    day: "2-digit",
+    month: "2-digit",
+  })}</p>
   <p>{event.lokation}</p>
   <a href=`/details/${event.id}`>Read more</a>
 </div>
@@ -17,7 +23,7 @@ const { event } = Astro.props;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 1rem;
-    min-height: 150px;
+    min-height: 100px;
     padding: 1rem;
     border-radius: 10px;
     background-color: #3f0909e2;
@@ -38,15 +44,19 @@ const { event } = Astro.props;
     border-radius: 8px;
   }
 
-  time {
-    font-weight: bold;
-    font-size: 0.85rem;
-  }
+ 
 
   p {
-    font-size: 0.85rem;
-    margin: 0.5rem 0;
+    margin: 0 0 1rem 0;
   }
 
+  a {
+    text-decoration: none;
+    background-color: #fdfdb5ba;
+    color: #3f0909e2;
+    border-radius: 5px;
+    padding: 4px 8px;
+
+  }
 
 </style>
