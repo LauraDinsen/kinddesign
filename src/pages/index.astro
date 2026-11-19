@@ -645,97 +645,228 @@ const collaborators = [
   /* MOBIL */
 
   @media (max-width: 700px) {
-    .container {
-      width: calc(100% - 40px);
-    }
+  /* FÆLLES */
 
-    .hero {
-      min-height: 85svh;
-      padding: 150px 20px 90px;
-    }
+  .container {
+    width: calc(100% - 32px);
+  }
 
-    .hero h1 {
-      margin-bottom: 28px;
-    }
+  h2 {
+    font-size: 20px;
+  }
 
-    .hero-buttons {
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
+  /* HERO */
 
-    .intro {
-      padding-block: 56px;
-    }
+  .hero {
+    min-height: 500px;
+    padding: 130px 16px 100px;
+    background-position: center;
+  }
 
-    .intro p {
-      font-size: 13px;
-    }
+  .hero-content {
+    width: 100%;
+  }
 
-    .events-section {
-      padding-bottom: 64px;
-    }
+  .hero h1 {
+    margin-bottom: 24px;
+  }
 
-    .section-heading {
-      gap: 12px;
-    }
+  .hero h1 img {
+    width: 100%;
+    height: auto;
+  }
 
-    .text-link {
-      font-size: 13px;
-    }
+  .hero-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    .event-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+  .hero-buttons :global(.cta) {
+    padding: 9px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
 
-    .event-card {
-      min-height: 250px;
-    }
+  .scroll-down {
+    display: none;
+  }
 
-    .event-card h3 {
-      font-size: 28px;
-    }
+  /* INTRO */
 
-    .community {
-      min-height: 720px;
-      align-items: flex-end;
-      padding: 220px 20px 32px;
-      background-position: 35% center;
-    }
+  .intro {
+    padding-block: 56px;
+  }
 
-    .community-panel {
-      width: 100%;
-      padding: 28px 24px;
-    }
+  .intro h2 {
+    font-size: 19px;
+  }
 
-    .community-panel p {
-      font-size: 14px;
-    }
+  .intro p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
 
-    .voices-section {
-    padding-block: 56px 64px;
+  /* EVENTS */
+
+  .events-section {
+    padding-bottom: 64px;
+  }
+
+  .section-heading {
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 19px;
+  }
+
+  .text-link {
+    font-size: 12px;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .event-card {
+    min-height: 170px;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .event-card h3 {
+    font-size: 26px;
+  }
+
+  .event-info {
+    padding: 14px 12px;
+    gap: 16px;
+    border-radius: 5px;
+  }
+
+  .event-date {
+    font-size: 15px;
+  }
+
+  .event-location {
+    font-size: 12px;
+  }
+
+  .ticket-link {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  /* COMMUNITY */
+
+  .community {
+    min-height: auto;
+    padding: 24px 16px;
+    background-position: center;
+  }
+
+  .community-panel {
+    width: 100%;
+    padding: 28px 20px;
+    border-radius: 6px;
+  }
+
+  .community-panel .community-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .community-panel .community-title img {
+    width: 115px;
+    height: auto;
+  }
+
+  .community-panel .subtitle {
+    margin-bottom: 24px;
+    font-size: 12px;
+  }
+
+  .community-panel p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .community-panel :global(.cta) {
+    display: table;
+    margin: 24px auto 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .decoration {
+    width: 28px;
+    top: -14px;
+    left: -8px;
+  }
+
+  /* VOICES */
+
+  .voices-section {
+    padding-block: 64px;
+  }
+
+  .voices-section .centered-heading h2 {
+    font-size: 19px;
   }
 
   .voices-section .subtitle {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .voices-artwork {
-    margin-top: 24px;
+    margin-top: 28px;
   }
 
-    .collaborators-section {
-      padding-block: 48px;
-    }
+  /* COLLABORATORS */
 
-    .collaborator-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .collaborator-list img {
-      height: 80px;
-    }
+  .collaborators-section {
+    padding-block: 40px;
   }
+
+  .collaborators-section h2 {
+    font-size: 19px;
+  }
+
+  .collaborators-section .subtitle {
+    max-width: 260px;
+    margin-inline: auto;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .collaborator-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-block: 32px;
+  }
+
+  .collaborator-list img {
+    width: 100%;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .collaborator-button :global(.cta) {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+}
 </style>
